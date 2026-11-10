@@ -154,7 +154,7 @@ After the medical examination, patients follow one of two possible pathways:
 
 The routing decision is implemented through the `selectOutput` block.
 
-Patients requiring additional examinations pass through `ulterioriTest` and subsequently exit through `sink2`.
+Patients requiring additional examinations pass through the `ulterioriTest` Delay block and subsequently exit through `sink2`. No custom stochastic test-duration distribution was specified in the model.
 
 Patients discharged directly exit through `sink`.
 
@@ -245,33 +245,33 @@ The following table summarizes the results obtained from the 2,700 simulation re
 
 | Doctors | Nurses | Beds | Mean Waiting Time (min) | Relative Error |
 |---:|---:|---:|---:|---:|
-| 2 | 2 | 6 | 112.07 | 3.54% |
-| 2 | 2 | 8 | 110.54 | 3.92% |
-| 2 | 2 | 10 | 113.34 | 3.24% |
-| 2 | 3 | 6 | 110.14 | 4.03% |
-| 2 | 3 | 8 | 112.73 | 3.78% |
-| 2 | 3 | 10 | 108.12 | 3.68% |
-| 2 | 4 | 6 | 109.31 | 4.15% |
-| 2 | 4 | 8 | 113.52 | 4.09% |
-| 2 | 4 | 10 | 114.66 | 3.79% |
-| 3 | 2 | 6 | 110.57 | 3.45% |
-| 3 | 2 | 8 | 111.88 | 3.58% |
-| 3 | 2 | 10 | 109.35 | 2.95% |
-| 3 | 3 | 6 | 105.25 | 3.95% |
-| 3 | 3 | 8 | 108.14 | 3.49% |
-| 3 | 3 | 10 | 106.94 | 3.97% |
-| 3 | 4 | 6 | 105.33 | 3.93% |
-| 3 | 4 | 8 | 107.57 | 3.80% |
-| 3 | 4 | 10 | 110.21 | 3.10% |
-| 4 | 2 | 6 | 96.79 | 3.03% |
-| 4 | 2 | 8 | 96.90 | 3.20% |
-| 4 | 2 | 10 | 95.94 | 2.98% |
-| 4 | 3 | 6 | 96.61 | 2.99% |
-| 4 | 3 | 8 | 95.09 | 3.21% |
-| **4** | **3** | **10** | **91.26** | **3.39%** |
-| 4 | 4 | 6 | 97.23 | 3.30% |
-| 4 | 4 | 8 | 95.62 | 3.58% |
-| 4 | 4 | 10 | 93.68 | 2.87% |
+| 2 | 2 | 6 | 114.58 | 3.86% |
+| 2 | 2 | 8 | 116.79 | 3.97% |
+| 2 | 2 | 10 | 115.14 | 3.50% |
+| 2 | 3 | 6 | 108.14 | 3.96% |
+| 2 | 3 | 8 | 111.15 | 3.81% |
+| 2 | 3 | 10 | 112.25 | 4.20% |
+| 2 | 4 | 6 | 112.41 | 3.33% |
+| 2 | 4 | 8 | 112.75 | 3.78% |
+| 2 | 4 | 10 | 111.15 | 4.14% |
+| 3 | 2 | 6 | 113.31 | 3.09% |
+| 3 | 2 | 8 | 111.60 | 3.23% |
+| 3 | 2 | 10 | 109.60 | 3.62% |
+| 3 | 3 | 6 | 106.63 | 3.39% |
+| 3 | 3 | 8 | 109.21 | 3.44% |
+| 3 | 3 | 10 | 108.01 | 3.63% |
+| 3 | 4 | 6 | 108.29 | 3.39% |
+| 3 | 4 | 8 | 108.65 | 3.59% |
+| 3 | 4 | 10 | 108.40 | 3.15% |
+| 4 | 2 | 6 | 96.34 | 3.03% |
+| 4 | 2 | 8 | 95.32 | 2.93% |
+| 4 | 2 | 10 | 96.91 | 2.89% |
+| **4** | **3** | **6** | **91.69** | **3.68%** |
+| 4 | 3 | 8 | 93.83 | 3.75% |
+| 4 | 3 | 10 | 93.74 | 2.92% |
+| 4 | 4 | 6 | 94.39 | 3.22% |
+| 4 | 4 | 8 | 91.77 | 3.35% |
+| 4 | 4 | 10 | 92.71 | 3.26% |
 
 All 27 configurations achieved a relative error below 5% for the estimated mean waiting time.
 
@@ -283,13 +283,13 @@ The lowest observed mean waiting time was obtained with:
 |---|---:|
 | Doctors | 4 |
 | Nurses | 3 |
-| Treatment beds | 10 |
+| Treatment beds | 6 |
 
-**Mean waiting time: 91.26 minutes**
+**Mean waiting time: 91.69 minutes**
 
-**95% Confidence Interval: [88.17, 94.36] minutes**
+**95% Confidence Interval: [88.32, 95.06] minutes**
 
-**Relative Error: 3.39%**
+**Relative Error: 3.68%**
 
 The baseline configuration contains:
 
@@ -297,9 +297,9 @@ The baseline configuration contains:
 - 2 nurses
 - 6 beds
 
-Its mean waiting time was **112.07 minutes**.
+Its mean waiting time was **114.58 minutes**.
 
-Compared with the baseline, the lowest observed mean waiting time decreased by approximately **20.81 minutes**, corresponding to an **18.6% improvement**.
+Compared with the baseline, the lowest observed mean waiting time decreased by approximately **22.89 minutes**, corresponding to a **19.98% improvement**.
 
 This is the best observed configuration among the 27 scenarios tested; statistical superiority over every alternative configuration has not been established.
 
@@ -311,8 +311,8 @@ Average utilization across the experimental replications was approximately:
 
 | Resource | Mean Utilization |
 |---|---:|
-| Doctors | 96% |
-| Nurses | 51% |
+| Doctors | 96.3% |
+| Nurses | 51.1% |
 
 Doctors operate close to full capacity in many configurations, suggesting that medical staffing represents a major bottleneck in the simulated system.
 
@@ -333,7 +333,7 @@ During this simulation:
 
 - 414 patients arrived.
 - 267 patients started medical examination.
-- 147 patients remained waiting for a treatment bed at the simulation cutoff.
+- 147 patients had not yet started medical examination at the 24-hour cutoff.
 
 The results demonstrate the effect of priority scheduling on patient waiting times.
 
@@ -341,7 +341,7 @@ However, the relatively short observed waiting time for code 4 patients does not
 
 ### Additional Diagnostic Tests
 
-Across the experimental replications, the average proportion of completed patients requiring additional diagnostic tests was approximately **39.9%**.
+Each patient has a **40% probability** of being routed to additional diagnostic tests. The observed percentage among completed patients may vary between simulation runs.
 
 This indicator is calculated as:
 
@@ -392,9 +392,11 @@ Because the model uses stochastic arrivals and service durations, results may va
 
 ## CSV Data Export
 
-Experimental observations are exported to:
+Experimental observations are exported to the user's home directory as:
 
 `risultati_pronto_soccorso.csv`
+
+The numeric results reported here and in the final PDF correspond to the analyzed CSV export; executing the stochastic experiment again may produce different values.
 
 The CSV contains one row for each simulation replication.
 
@@ -426,10 +428,10 @@ The main limitations are:
 4. **Limited simulation horizon:** each replication stops after 24 hours.
 5. **Incomplete waiting-time observations:** patients still waiting at the simulation cutoff are excluded from the corresponding averages.
 6. **No patient abandonment:** patients do not leave the waiting queue because of excessive delays.
-7. **Simplified diagnostic-testing process:** additional tests are represented through probabilistic routing and a delay.
+7. **Simplified diagnostic-testing process:** additional tests are represented through probabilistic routing and a delay without a custom stochastic duration.
 8. **No economic optimization:** staffing costs and budget constraints are not included in the experimental comparison.
 
-The results should therefore be interpreted as findings from a simulation prototype rather than recommendations for an actual hospital.
+The results should therefore be interpreted as findings from a simulation prototype rather than recommendations for an actual hospital. The model has not been validated against real hospital data.
 
 ## Future Improvements
 
@@ -451,7 +453,7 @@ This project demonstrates how Discrete Event Simulation can support the analysis
 
 The experimental analysis evaluates **27 resource configurations across 2,700 simulations**, providing quantitative estimates of patient waiting times and resource utilization.
 
-Among the tested configurations, **4 doctors, 3 nurses, and 10 treatment beds** achieved the lowest observed average waiting time of **91.26 minutes**, representing an approximate **18.6% reduction** compared with the baseline configuration.
+Among the tested configurations, **4 doctors, 3 nurses, and 6 treatment beds** achieved the lowest observed average waiting time of **91.69 minutes**, representing an approximate **19.98% reduction** compared with the baseline configuration.
 
 The results highlight the importance of medical resource availability and demonstrate the usefulness of simulation for evaluating alternative operational configurations.
 
